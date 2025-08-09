@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Kriti! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            margin-bottom: 2rem;
+            text-align: left;
+            padding: 0 1rem;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .wishes-container {
+            margin: 2rem 0;
+        }
+
+        .wish-item {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            border-left: 5px solid #e17055;
+            animation: slideInLeft 1s ease-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .wish-item:nth-child(2) {
+            animation-delay: 0.7s;
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            border-left-color: #00b894;
+        }
+
+        .wish-item:nth-child(3) {
+            animation-delay: 0.9s;
+            background: linear-gradient(45deg, #cea8fd, #b19cd9);
+            border-left-color: #a29bfe;
+        }
+
+        .balloons {
+            position: fixed;
+            top: -50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon {
+            width: 50px;
+            height: 70px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+        }
+
+        .balloon:nth-child(1) {
+            background: #ff6b6b;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background: #4ecdc4;
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            background: #ffe66d;
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(4) {
+            background: #ff8b94;
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .balloon:nth-child(5) {
+            background: #b4f8c8;
+            left: 90%;
+            animation-delay: 4s;
+        }
+
+        .celebration-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .celebration-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200px 0;
+            }
+            100% {
+                background-position: 200px 0;
+            }
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .birthday-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <div class="container">
+        <div class="birthday-card">
+            <h1>🎉 Happy Birthday, Kriti! 🎉</h1>
+            <p class="subtitle">Today is all about celebrating you! ✨</p>
+            
+            <div class="message">
+                <p>On this special day, we celebrate not just another year of your life, but all the <span class="highlight">joy, laughter, and love</span> you bring into the world. Your kindness touches everyone around you, and your smile has the power to brighten even the cloudiest days.</p>
+                
+                <p>As you blow out your candles and make a wish, know that you are surrounded by people who care about you deeply. May this new chapter of your life be filled with beautiful moments, exciting adventures, and dreams coming true.</p>
+            </div>
+
+            <div class="wishes-container">
+                <div class="wish-item">
+                    <strong>🌟 May your year ahead be filled with endless possibilities and beautiful surprises!</strong>
+                </div>
+                <div class="wish-item">
+                    <strong>💖 May love and happiness follow you wherever you go!</strong>
+                </div>
+                <div class="wish-item">
+                    <strong>🎈 May all your dreams take flight and your heart always be light!</strong>
+                </div>
+            </div>
+
+            <button class="celebration-btn" onclick="celebrate()">🎊 Click to Celebrate! 🎊</button>
+        </div>
+    </div>
+
+    <script>
+        function celebrate() {
+            // Create confetti effect
+            for (let i = 0; i < 100; i++) {
+                createConfetti();
+            }
+            
+            // Show celebration message
+            setTimeout(() => {
+                alert("🎉 Happy Birthday Kriti! Hope your day is as amazing as you are! 🎉");
+            }, 500);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Random colors
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff8b94', '#b4f8c8', '#a8e6cf', '#ffd93d'];
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random position
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            document.body.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // Add some automatic confetti on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => createConfetti(), i * 100);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
