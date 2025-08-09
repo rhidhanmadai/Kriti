@@ -15,28 +15,34 @@
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
+            position: relative;
         }
 
         .container {
             text-align: center;
             padding: 2rem;
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
         }
 
         .birthday-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
             animation: fadeInUp 1s ease-out;
             position: relative;
             overflow: hidden;
+            margin-bottom: 3rem;
         }
 
         .birthday-card::before {
@@ -45,70 +51,183 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+            background-size: 200% 100%;
             animation: shimmer 3s ease-in-out infinite;
         }
 
-        h1 {
+        .profile-section {
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5rem;
             color: #2c3e50;
             margin-bottom: 1rem;
             animation: bounce 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #7f8c8d;
             margin-bottom: 2rem;
             font-style: italic;
         }
 
+        .age-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-card:nth-child(1) { animation-delay: 0.2s; }
+        .photo-card:nth-child(2) { animation-delay: 0.4s; }
+        .photo-card:nth-child(3) { animation-delay: 0.6s; }
+        .photo-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .photo-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ffecd2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-caption {
+            padding: 1rem;
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+
         .message {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.2rem;
+            line-height: 1.9;
             color: #34495e;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
             text-align: left;
             padding: 0 1rem;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid #ff6b6b;
         }
 
         .highlight {
             color: #e74c3c;
             font-weight: bold;
+            background: linear-gradient(45deg, #fff5f5, #ffe8e8);
+            padding: 2px 6px;
+            border-radius: 5px;
         }
 
         .wishes-container {
-            margin: 2rem 0;
+            margin: 3rem 0;
+            display: grid;
+            gap: 1.5rem;
         }
 
         .wish-item {
-            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 15px;
-            border-left: 5px solid #e17055;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border-left: 6px solid;
             animation: slideInLeft 1s ease-out;
-            animation-delay: 0.5s;
             animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .wish-item:nth-child(1) {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-left-color: #e17055;
+            animation-delay: 0.5s;
         }
 
         .wish-item:nth-child(2) {
-            animation-delay: 0.7s;
-            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
             border-left-color: #00b894;
+            animation-delay: 0.7s;
         }
 
         .wish-item:nth-child(3) {
-            animation-delay: 0.9s;
-            background: linear-gradient(45deg, #cea8fd, #b19cd9);
+            background: linear-gradient(135deg, #cea8fd, #b19cd9);
             border-left-color: #a29bfe;
+            animation-delay: 0.9s;
+        }
+
+        .wish-item:nth-child(4) {
+            background: linear-gradient(135deg, #ffd3e1, #fd79a8);
+            border-left-color: #e84393;
+            animation-delay: 1.1s;
         }
 
         .balloons {
             position: fixed;
             top: -50px;
             animation: float 6s ease-in-out infinite;
+            z-index: 1000;
         }
 
         .balloon {
@@ -116,54 +235,79 @@
             height: 70px;
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             position: absolute;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .balloon:nth-child(1) {
-            background: #ff6b6b;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .balloon:nth-child(2) {
-            background: #4ecdc4;
-            left: 30%;
-            animation-delay: 1s;
-        }
-
-        .balloon:nth-child(3) {
-            background: #ffe66d;
-            left: 50%;
-            animation-delay: 2s;
-        }
-
-        .balloon:nth-child(4) {
-            background: #ff8b94;
-            left: 70%;
-            animation-delay: 3s;
-        }
-
-        .balloon:nth-child(5) {
-            background: #b4f8c8;
-            left: 90%;
-            animation-delay: 4s;
-        }
+        .balloon:nth-child(1) { background: #ff6b6b; left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { background: #4ecdc4; left: 30%; animation-delay: 1s; }
+        .balloon:nth-child(3) { background: #ffe66d; left: 50%; animation-delay: 2s; }
+        .balloon:nth-child(4) { background: #ff8b94; left: 70%; animation-delay: 3s; }
+        .balloon:nth-child(5) { background: #b4f8c8; left: 90%; animation-delay: 4s; }
 
         .celebration-btn {
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 2rem 1rem;
+            box-shadow: 0 8px 20px rgba(238, 90, 36, 0.3);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
         }
 
         .celebration-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(238, 90, 36, 0.4);
+        }
+
+        .celebration-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .celebration-btn:hover::before {
+            left: 100%;
+        }
+
+        .music-btn {
+            background: linear-gradient(45deg, #a8e6cf, #00b894);
+            margin-left: 1rem;
+        }
+
+        .music-btn:hover {
+            box-shadow: 0 12px 30px rgba(0, 184, 148, 0.4);
+        }
+
+        .footer-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .love-message {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-top: 2rem;
         }
 
         .confetti {
@@ -172,76 +316,69 @@
             height: 10px;
             background: #ff6b6b;
             animation: confetti-fall 3s linear infinite;
+            z-index: 1000;
+        }
+
+        .heart {
+            color: #e74c3c;
+            animation: heartbeat 1.5s ease-in-out infinite;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-25px); }
         }
 
         @keyframes shimmer {
-            0% {
-                background-position: -200px 0;
-            }
-            100% {
-                background-position: 200px 0;
-            }
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
         }
 
         @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.2); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.2); }
+            70% { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            .birthday-card {
-                padding: 2rem;
-            }
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.3rem; }
+            .birthday-card { padding: 2rem; }
+            .photo-gallery { grid-template-columns: 1fr 1fr; }
+            .profile-img { width: 120px; height: 120px; font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -254,75 +391,215 @@
         <div class="balloon"></div>
     </div>
 
-    <div class="container">
-        <div class="birthday-card">
-            <h1>🎉 Happy Birthday, Kriti! 🎉</h1>
-            <p class="subtitle">Today is all about celebrating you! ✨</p>
-            
-            <div class="message">
-                <p>On this special day, we celebrate not just another year of your life, but all the <span class="highlight">joy, laughter, and love</span> you bring into the world. Your kindness touches everyone around you, and your smile has the power to brighten even the cloudiest days.</p>
+    <div class="hero-section">
+        <div class="container">
+            <div class="birthday-card">
+                <div class="profile-section">
+                    <div class="profile-img">👑</div>
+                    <h1>🎉 Happy Birthday, Kriti! 🎉</h1>
+                    <div class="age-badge">Another Year of Awesome! ✨</div>
+                    <p class="subtitle">Today is all about celebrating the amazing person you are! <span class="heart">💖</span></p>
+                </div>
                 
-                <p>As you blow out your candles and make a wish, know that you are surrounded by people who care about you deeply. May this new chapter of your life be filled with beautiful moments, exciting adventures, and dreams coming true.</p>
+                <div class="message">
+                    <p>On this special day, we celebrate not just another year of your life, but all the <span class="highlight">joy, laughter, and love</span> you bring into the world. Your kindness touches everyone around you, and your radiant smile has the power to brighten even the cloudiest days.</p>
+                    
+                    <p>As you blow out your candles and make a wish, know that you are surrounded by people who care about you deeply. May this new chapter of your life be filled with <span class="highlight">beautiful moments, exciting adventures</span>, and dreams that soar beyond the stars.</p>
+                </div>
+
+                <div class="photo-gallery">
+                    <div class="photo-card">
+                        <div class="photo-placeholder">🌸</div>
+                        <div class="photo-caption">Beautiful moments</div>
+                    </div>
+                    <div class="photo-card">
+                        <div class="photo-placeholder">🎂</div>
+                        <div class="photo-caption">Sweet memories</div>
+                    </div>
+                    <div class="photo-card">
+                        <div class="photo-placeholder">🌟</div>
+                        <div class="photo-caption">Shining bright</div>
+                    </div>
+                    <div class="photo-card">
+                        <div class="photo-placeholder">💫</div>
+                        <div class="photo-caption">Dreams come true</div>
+                    </div>
+                </div>
+
+                <div class="wishes-container">
+                    <div class="wish-item">
+                        <strong>🌟 May your year ahead be filled with endless possibilities and beautiful surprises that make your heart dance with joy!</strong>
+                    </div>
+                    <div class="wish-item">
+                        <strong>💖 May love and happiness follow you wherever you go, and may every day bring you reasons to smile!</strong>
+                    </div>
+                    <div class="wish-item">
+                        <strong>🎈 May all your dreams take flight and your heart always be light, filled with hope and wonder!</strong>
+                    </div>
+                    <div class="wish-item">
+                        <strong>🌺 May this new year of life bring you adventures that inspire you and moments that take your breath away!</strong>
+                    </div>
+                </div>
+
+                <button class="celebration-btn" onclick="celebrate()">🎊 Click to Celebrate! 🎊</button>
+                <button class="celebration-btn music-btn" onclick="playBirthdayTune()">🎵 Birthday Song 🎵</button>
             </div>
 
-            <div class="wishes-container">
-                <div class="wish-item">
-                    <strong>🌟 May your year ahead be filled with endless possibilities and beautiful surprises!</strong>
+            <div class="footer-section">
+                <div class="love-message">
+                    "Today we celebrate you, tomorrow we celebrate with you, but every day we're grateful for you." <span class="heart">💕</span>
                 </div>
-                <div class="wish-item">
-                    <strong>💖 May love and happiness follow you wherever you go!</strong>
-                </div>
-                <div class="wish-item">
-                    <strong>🎈 May all your dreams take flight and your heart always be light!</strong>
+                <div class="signature">
+                    With all our love and warmest wishes,<br>
+                    <strong>Happy Birthday, Kriti! 🎉</strong>
                 </div>
             </div>
-
-            <button class="celebration-btn" onclick="celebrate()">🎊 Click to Celebrate! 🎊</button>
         </div>
     </div>
 
     <script>
+        let isPlayingMusic = false;
+        let audioContext;
+
         function celebrate() {
-            // Create confetti effect
-            for (let i = 0; i < 100; i++) {
-                createConfetti();
+            // Create intense confetti effect
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => createConfetti(), i * 30);
             }
             
             // Show celebration message
             setTimeout(() => {
-                alert("🎉 Happy Birthday Kriti! Hope your day is as amazing as you are! 🎉");
-            }, 500);
+                const messages = [
+                    "🎉 Happy Birthday Kriti! Hope your day is as amazing as you are! 🎉",
+                    "✨ Wishing you a year full of joy, love, and beautiful surprises! ✨",
+                    "🎂 May all your birthday wishes come true! You deserve the world! 🎂"
+                ];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                alert(randomMessage);
+            }, 1000);
+
+            // Add screen flash effect
+            const flash = document.createElement('div');
+            flash.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.8);
+                z-index: 9999;
+                pointer-events: none;
+                animation: flash 0.5s ease-out;
+            `;
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 500);
         }
 
         function createConfetti() {
             const confetti = document.createElement('div');
             confetti.classList.add('confetti');
             
-            // Random colors
-            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff8b94', '#b4f8c8', '#a8e6cf', '#ffd93d'];
-            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            // Random colors and shapes
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff8b94', '#b4f8c8', '#a8e6cf', '#ffd93d', '#ff9ff3'];
+            const shapes = ['🎊', '🎉', '⭐', '💖', '🎈', '🌟', '✨', '🎂'];
             
-            // Random position
+            if (Math.random() > 0.7) {
+                confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+                confetti.style.fontSize = '20px';
+                confetti.style.background = 'transparent';
+            } else {
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            }
+            
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.animationDelay = Math.random() * 2 + 's';
             confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
             
             document.body.appendChild(confetti);
             
-            // Remove confetti after animation
-            setTimeout(() => {
-                confetti.remove();
-            }, 5000);
+            setTimeout(() => confetti.remove(), 6000);
         }
 
-        // Add some automatic confetti on page load
+        function playBirthdayTune() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (isPlayingMusic) {
+                return;
+            }
+
+            isPlayingMusic = true;
+            const btn = document.querySelector('.music-btn');
+            btn.innerHTML = '🎵 Playing... 🎵';
+
+            // Simple birthday tune notes
+            const notes = [
+                { freq: 264, duration: 400 }, // C4
+                { freq: 264, duration: 400 }, // C4
+                { freq: 297, duration: 400 }, // D4
+                { freq: 264, duration: 400 }, // C4
+                { freq: 352, duration: 400 }, // F4
+                { freq: 330, duration: 800 }, // E4
+            ];
+
+            let currentNote = 0;
+            function playNote() {
+                if (currentNote >= notes.length) {
+                    isPlayingMusic = false;
+                    btn.innerHTML = '🎵 Birthday Song 🎵';
+                    return;
+                }
+
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = notes[currentNote].freq;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + notes[currentNote].duration / 1000);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + notes[currentNote].duration / 1000);
+                
+                currentNote++;
+                setTimeout(playNote, notes[currentNote - 1].duration);
+            }
+
+            playNote();
+        }
+
+        // Add CSS for flash animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flash {
+                0% { opacity: 0; }
+                50% { opacity: 1; }
+                100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto confetti on page load
         window.addEventListener('load', () => {
             setTimeout(() => {
-                for (let i = 0; i < 30; i++) {
-                    setTimeout(() => createConfetti(), i * 100);
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => createConfetti(), i * 150);
                 }
-            }, 1000);
+            }, 1500);
         });
+
+        // Surprise confetti every 30 seconds
+        setInterval(() => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createConfetti(), i * 100);
+            }
+        }, 30000);
     </script>
 </body>
 </html>
