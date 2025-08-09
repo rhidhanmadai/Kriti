@@ -459,7 +459,7 @@
 
     <script>
         let isPlayingMusic = false;
-        let audioContext;
+        let birthdayAudio = null;
 
         function celebrate() {
             // Create intense confetti effect
@@ -522,56 +522,71 @@
         }
 
         function playBirthdayTune() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
+            const btn = document.querySelector('.music-btn');
+            
             if (isPlayingMusic) {
+                // Stop the music if it's currently playing
+                if (birthdayAudio) {
+                    birthdayAudio.pause();
+                    birthdayAudio.currentTime = 0;
+                }
+                isPlayingMusic = false;
+                btn.innerHTML = '🎵 Birthday Song 🎵';
                 return;
             }
 
-            isPlayingMusic = true;
-            const btn = document.querySelector('.music-btn');
-            btn.innerHTML = '🎵 Playing... 🎵';
-
-            // Simple birthday tune notes
-            const notes = [
-                { freq: 264, duration: 400 }, // C4
-                { freq: 264, duration: 400 }, // C4
-                { freq: 297, duration: 400 }, // D4
-                { freq: 264, duration: 400 }, // C4
-                { freq: 352, duration: 400 }, // F4
-                { freq: 330, duration: 800 }, // E4
-            ];
-
-            let currentNote = 0;
-            function playNote() {
-                if (currentNote >= notes.length) {
+            // Create new audio instance only if needed
+            if (!birthdayAudio) {
+                birthdayAudio = new Audio();
+                birthdayAudio.src = '/assets/birthday-song.mp3';
+                
+                // Add event listeners only once
+                birthdayAudio.addEventListener('ended', () => {
                     isPlayingMusic = false;
                     btn.innerHTML = '🎵 Birthday Song 🎵';
-                    return;
-                }
-
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
+                });
                 
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = notes[currentNote].freq;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + notes[currentNote].duration / 1000);
-                
-                oscillator.start();
-                oscillator.stop(audioContext.currentTime + notes[currentNote].duration / 1000);
-                
-                currentNote++;
-                setTimeout(playNote, notes[currentNote - 1].duration);
+                birthdayAudio.addEventListener('error', (e) => {
+                    console.error('Audio error:', e);
+                    // Try alternative path
+                    if (birthdayAudio.src.includes('/assets/')) {
+                        birthdayAudio.src = 'assets/birthday-song.mp3';
+                        birthdayAudio.load();
+                    } else {
+                        alert('🎵 Cannot play the audio file. Please check the file format and location! 🎵');
+                        isPlayingMusic = false;
+                        btn.innerHTML = '🎵 Birthday Song 🎵';
+                    }
+                });
             }
 
-            playNote();
+            playAudioFile();
+        }
+
+        function playAudioFile() {
+            const btn = document.querySelector('.music-btn');
+            
+            isPlayingMusic = true;
+            btn.innerHTML = '⏸️ Stop Song ⏸️';
+            
+            birthdayAudio.currentTime = 0;
+            
+            birthdayAudio.play().then(() => {
+                // Audio started playing successfully - no need to log this repeatedly
+            }).catch((error) => {
+                console.error('Playback failed:', error);
+                
+                if (error.name === 'NotAllowedError') {
+                    alert('🎵 Please click the button again - browsers require user interaction to play audio! 🎵');
+                } else if (error.name === 'NotSupportedError') {
+                    alert('🎵 Audio format not supported. Please make sure the file is a valid MP3! 🎵');
+                } else {
+                    alert('🎵 Could not play audio: ' + error.message + ' 🎵');
+                }
+                
+                isPlayingMusic = false;
+                btn.innerHTML = '🎵 Birthday Song 🎵';
+            });
         }
 
         // Add CSS for flash animation
